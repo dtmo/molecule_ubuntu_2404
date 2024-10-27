@@ -9,7 +9,7 @@ package updates applied.
 
 ## Installed Packages
 
-* [Cloud-init](https://cloudinit.readthedocs.io/en/latest/): Cloud-init is used
+* [Cloud-init](https://cloudinit.readthedocs.io/en/stable/): Cloud-init is used
   by `dtmo/molecule_driver_libvirt` to perform initial VM configuration. It is
   also used to pass installation config to the Subiquity installer, and so
   appears to be installed by default. See
@@ -20,16 +20,24 @@ package updates applied.
   finished initialising the VM, and to retrieve network information about the
   guest OS.
 
-## Image Usage
+## Cloud-init Configuration
 
-As the built image is intended to be used with `dtmo/molecule_driver_libvirt`,
-and therefore configured with Cloud-init, there are no default accounts or
-credentials baked into the image.
+Cloud-init is configured to use the
+[NoCloud Datasource](https://cloudinit.readthedocs.io/en/stable/reference/datasources/nocloud.html), falling back to the
+[None Datasource](https://cloudinit.readthedocs.io/en/stable/reference/datasources/none.html)
+if no configuration can be discovered.
 
 When used with `dtmo/molecule_driver_libvirt` the image will be configured with
 the Cloud-init
-[NoCloud Datasource](https://cloudinit.readthedocs.io/en/latest/reference/datasources/nocloud.html)
+[NoCloud Datasource](https://cloudinit.readthedocs.io/en/stable/reference/datasources/nocloud.html)
 using configuration set by the Molecule driver.
+
+When a VM is created from the image and booted with no configuration, Cloud-init
+will fall back to the
+[None Datasource](https://cloudinit.readthedocs.io/en/stable/reference/datasources/none.html)
+which is configured to create a default cloud user: `ubuntu`, and with the
+password `password`. Password based authentication will be enabled and no SSH
+keys installed.
 
 ## Building
 
