@@ -30,21 +30,21 @@ if getent passwd "$(cloud-init query system_info.default_user.name)"; then
 fi
 
 # Remove logs
-truncate --size 0 /var/log/apport.log
-truncate --size 0 /var/log/btmp
 rm -rf /var/log/apt/*
 rm -rf /var/log/journal/*
 rm -f /var/log/cloud-init-output.log
 rm -f /var/log/cloud-init.log
+truncate --size 0 /var/log/alternatives.log
+truncate --size 0 /var/log/apport.log
+truncate --size 0 /var/log/bootstrap.log
+truncate --size 0 /var/log/btmp
 truncate --size 0 /var/log/dpkg.log
-truncate --size 0 /var/log/unattended-upgrades/unattended-upgrades.log
+truncate --size 0 /var/log/faillog
+truncate --size 0 /var/log/lastlog
 truncate --size 0 /var/log/unattended-upgrades/unattended-upgrades-dpkg.log
 truncate --size 0 /var/log/unattended-upgrades/unattended-upgrades-shutdown.log
-truncate --size 0 /var/log/alternatives.log
+truncate --size 0 /var/log/unattended-upgrades/unattended-upgrades.log
 truncate --size 0 /var/log/wtmp
-truncate --size 0 /var/log/bootstrap.log
-truncate --size 0 /var/log/lastlog
-truncate --size 0 /var/log/faillog
 
 # Clean /tmp
 rm -rf /tmp/*

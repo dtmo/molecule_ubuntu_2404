@@ -4,7 +4,7 @@ A [Packer](https://www.packer.io/) project to build an image of Ubuntu Server
 24.04 suitable for use with
 [dtmo/molecule_driver_libvirt](https://github.com/dtmo/molecule_driver_libvirt).
 
-The built image is a default installation of Ubuntu Server 24.04 with all
+The built image is a minimal installation of Ubuntu Server 24.04 with all
 package updates applied.
 
 ## Installed Packages
@@ -17,7 +17,7 @@ package updates applied.
 * [QEMU Guest Agent](https://wiki.qemu.org/Features/GuestAgent): QEMU Guest
   Agent is used to provide hypervisor access to the VM.
   `dtmo/molecule_driver_libvirt` uses it to determine when Cloud-init has
-  finished initialising the VM, and to retrieve network information about the
+  finished initializing the VM, and to retrieve network information about the
   guest OS.
 
 ## Cloud-init Configuration
@@ -35,9 +35,9 @@ using configuration set by the Molecule driver.
 When a VM is created from the image and booted with no configuration, Cloud-init
 will fall back to the
 [None Datasource](https://cloudinit.readthedocs.io/en/stable/reference/datasources/none.html)
-which is configured to create a default cloud user: `ubuntu`, and with the
-password `password`. Password based authentication will be enabled and no SSH
-keys installed.
+which is configured to create the distro default cloud user: `ubuntu`, and with
+the password `password`. Password based authentication will be enabled and no
+SSH keys installed.
 
 ## Building
 
