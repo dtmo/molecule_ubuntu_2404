@@ -138,7 +138,7 @@ source "qemu" "ubuntu2404" {
 build {
   source "source.qemu.ubuntu2404" {
     # ISO Configuration
-    iso_url      = "https://releases.ubuntu.com/24.04/ubuntu-24.04.1-live-server-amd64.iso"
+    iso_url      = "https://releases.ubuntu.com/24.04/ubuntu-24.04.2-live-server-amd64.iso"
     iso_checksum = "file:https://releases.ubuntu.com/24.04/SHA256SUMS"
 
     # EFI Boot Configuration
